@@ -1,0 +1,31 @@
+---
+format: dashboard
+---
+
+```{r setup}
+#| echo: false
+library(tidyverse)
+library(reactable)
+
+dat <- rio::import("data.csv")
+```
+
+```{r data}
+dat |>
+  reactable(
+    searchable = T, 
+    compact = TRUE,
+    columns = list(
+      column5 = colDef(show = FALSE),
+      column4 = colDef(
+        cell = function(value, index) {
+          htmltools::tags$a(
+            href = dat[index, "column5"],
+            target = "_blank",
+            as.character(value)
+          )
+        }
+      )
+    )
+  )
+```

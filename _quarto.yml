@@ -1,0 +1,16 @@
+project:
+  type: website
+  render: 
+    - index.qmd
+    - subdirectory/doc1.qmd
+
+website:
+  title: "Test"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+
+
+
